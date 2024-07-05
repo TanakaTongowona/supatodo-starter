@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import { Send } from "lucide-react"
 
 function FormContent() {
   return (
@@ -29,5 +29,4 @@ export function TodoForm() {
         </form>
       </CardContent>
     </Card>
-  );
-}
+  )}
