@@ -74,3 +74,23 @@ export async function oAuthSignIn(provider: Provider) {
 
   return redirect(data.url)
 }
+export async function deleteTodo(id: number) {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+      throw new Error("User is not logged in")
+  }
+
+  const { error } = await supabase.from("todos").delete().match({
+      user_id: user.id,
+      id: id
+  })
+
+  if (error) {
+      throw new Error("Error deleting task")
+  }
+
+  revalidatePath("/todos")
+}
+
